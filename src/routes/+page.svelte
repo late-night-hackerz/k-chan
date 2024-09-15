@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import type { PageData } from './$types';
+	import AccessForm from './access-form.svelte';
+
+	export let data: PageData;
+</script>
+
+<main class="flex h-[100dvh] flex-col justify-center">
+	<AccessForm data={data.form} />
+</main>
