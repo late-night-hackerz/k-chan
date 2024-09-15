@@ -11,7 +11,10 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
     "deploy": "pnpm run build && wrangler pages deploy",
-    "cf-typegen": "wrangler types && mv worker-configuration.d.ts src/"
+    "cf-typegen": "wrangler types && mv worker-configuration.d.ts src/",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240909.0",
@@ -20,6 +23,7 @@
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
     "@types/eslint": "^9.6.0",
+    "drizzle-kit": "^0.24.2",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.36.0",
@@ -33,5 +37,14 @@
     "vite": "^5.0.3",
     "wrangler": "^3.78.2"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "@hono/zod-validator": "^0.2.2",
+    "@libsql/client": "^0.11.0",
+    "drizzle-orm": "^0.33.0",
+    "drizzle-zod": "^0.5.1",
+    "hono": "^4.6.1",
+    "resend": "^4.0.0",
+    "zod": "^3.23.8"
+  }
 }
