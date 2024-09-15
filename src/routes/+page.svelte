@@ -1,5 +1,10 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
+	import type { PageData } from './$types';
+	import AccessForm from './access-form.svelte';
+
+	export let data: PageData;
 </script>
 
-<Button>Tussy</Button>
+<main class="flex h-[100dvh] flex-col justify-center">
+	<AccessForm data={data.form} />
+</main>

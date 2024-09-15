@@ -2,4 +2,6 @@
 	import '../app.css';
 </script>
 
-<slot></slot>
+<main class="flex flex-col gap-3 px-4">
+	<slot></slot>
+</main>
