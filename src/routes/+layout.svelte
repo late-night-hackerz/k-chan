@@ -13,10 +13,10 @@
 </script>
 
 <QueryClientProvider client={queryClient}>
-	<header class="sticky top-0 flex w-full flex-col border-b border-input bg-background py-3">
+	<header class="sticky top-0 flex w-full flex-col border-b border-input bg-background pt-3">
 		<div class="px-4">
 			<a
-				class={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'w-full')}
+				class={cn(buttonVariants({ variant: 'secondary', size: 'lg' }), 'w-full py-7')}
 				href="/new-post"
 			>
 				New Post
@@ -24,12 +24,12 @@
 		</div>
 
 		<div class="pt-4">
-			<ScrollArea class="flex w-full flex-col items-start py-1" orientation="horizontal">
+			<ScrollArea class="flex w-full flex-col items-start pb-3" orientation="horizontal">
 				<ToggleGroup.Root type="multiple">
 					{#each POST_TYPES as postType}
-						<ToggleGroup.Item value={postType} class="text-muted-foreground"
-							>#{postType}</ToggleGroup.Item
-						>
+						<ToggleGroup.Item value={postType} class="rounded-full text-muted-foreground">
+							#{postType}
+						</ToggleGroup.Item>
 					{/each}
 				</ToggleGroup.Root>
 			</ScrollArea>
