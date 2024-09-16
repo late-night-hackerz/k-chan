@@ -2,9 +2,17 @@ import type { PageServerLoad, Actions } from './$types';
 import { superValidate } from 'sveltekit-superforms';
 import { newPostFormSchema } from './schema';
 import { zod } from 'sveltekit-superforms/adapters';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
+import { check } from '$lib/funcs/auth';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ cookies }) => {
+	const authCookie = cookies.get('auth');
+	const loggedIn = authCookie ? await check(authCookie) : false;
+
+	if (!loggedIn) {
+		redirect(302, '/');
+	}
+
 	return {
 		form: await superValidate(zod(newPostFormSchema))
 	};

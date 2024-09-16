@@ -1,13 +1,15 @@
-import { Hono } from "hono";
-import authR from "./routes/auth";
-import userR from "./routes/user";
-
+import { Hono } from 'hono';
+import authR from './routes/auth';
+import postsR from './routes/posts';
+import { hc } from 'hono/client';
 
 const app = new Hono();
 
 app.route('/auth', authR);
-app.route('/users', userR);
+app.route('/posts', postsR);
 
 export const api = new Hono().route('/api', app);
 
-export type Router = typeof app;
+type AppType = typeof app;
+
+export const client = hc<AppType>('/api');
