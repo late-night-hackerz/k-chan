@@ -1,4 +1,4 @@
-import { JWT_SECRET } from '$env/static/private';
+import { BASE_URL, JWT_SECRET } from '$env/static/private';
 import { db, resend } from '$lib/db';
 import { users } from '$lib/db/schema';
 import { sign, verify } from 'hono/jwt';
@@ -23,7 +23,7 @@ export const login = async (email: string) => {
 		return { error: 'User not found' };
 	}
 	const key = await sign({ sub: email, exp: Date.now() + 1000 * 60 * 30 }, JWT_SECRET);
-	const link = `http://localhost:5173/api/auth/verify?auth=${encodeURIComponent(key)}`;
+	const link = `${BASE_URL}/api/auth/verify?auth=${encodeURIComponent(key)}`;
 	const { data, error } = await resend.emails.send({
 		from: 'auth@k-chan.tech',
 		to: [email],

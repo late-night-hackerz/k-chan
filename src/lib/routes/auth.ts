@@ -58,7 +58,7 @@ app.get(
 			return c.json({ error: 'auth is required' }, 400);
 		}
 		const { sub } = await verify(auth, JWT_SECRET);
-		setCookie(c, 'auth', auth, { maxAge: 1000 * 60 * 30 });
+		setCookie(c, 'auth', auth, { maxAge: 1000 * 60 * 60 * 24 * 7 });
 		return c.redirect('/');
 	}
 );
