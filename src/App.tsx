@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js';
 
-import { Login } from './Login';
+import { Login } from './pages/Login';
 // import { goto, Route } from './lib/router';
 import { init } from './lib/auth';
 import { RouteSectionProps } from '@solidjs/router';

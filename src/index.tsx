@@ -4,8 +4,8 @@ import { render } from 'solid-js/web';
 import './index.css';
 import App from './App';
 import { Route, Router } from '@solidjs/router';
-import { Home } from './Home';
-import { Login } from './Login';
+import { Home } from './pages/Home';
+import { Login } from './pages/Login';
 
 const root = document.getElementById('root');
 

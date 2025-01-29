@@ -1,6 +1,6 @@
 import { Component, createSignal } from "solid-js";
 import { tw } from "twind";
-import { login } from "./lib/auth";
+import { login } from "../lib/auth";
 import { useNavigate } from "@solidjs/router";
 // import { goto } from "./lib/router";
 
