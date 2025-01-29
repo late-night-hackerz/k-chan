@@ -7,13 +7,16 @@ export const init = () => {
   if(!nsec) {
     return false
   } else {
-    login(nsec)
+    ndk.signer = new NDKPrivateKeySigner(nsec);
     return true
   }
 }
 
+export const signedIn = init()
+
 export const login = (nsec: string) => {
   ndk.signer = new NDKPrivateKeySigner(nsec);
+  storePriv(nsec)
 }
 
 export const signup = () => {

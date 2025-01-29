@@ -1,9 +1,12 @@
 import { Component, createSignal } from "solid-js";
-import { styled } from "solid-styled-components";
 import { tw } from "twind";
+import { login } from "./lib/auth";
+import { useNavigate } from "@solidjs/router";
+// import { goto } from "./lib/router";
 
 export const Login: Component = () => {
   const [nsec, setNsec] = createSignal("");
+  const navigate = useNavigate()
 
   const validNsec = ({value}: {value: string}) => {
     return value.startsWith("nsec1"); 
@@ -17,6 +20,11 @@ export const Login: Component = () => {
       }
     });
   };
+
+  const submit = () => {
+    login(nsec())
+    navigate("/")
+  }
 
   return (
     <div class={tw`min-h-screen bg-gray-900 text-gray-100 p-8`}>
@@ -95,7 +103,7 @@ export const Login: Component = () => {
       {/* Login Button */}
       <button class={tw`w-full py-3 bg-purple-600 hover:bg-purple-700 rounded-lg 
                        focus:(outline-none ring-2 ring-purple-500)
-                       font-medium transition-colors`}>
+                       font-medium transition-colors`} on:click={submit}>
         Login
       </button>
     </main>

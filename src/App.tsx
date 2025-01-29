@@ -1,13 +1,17 @@
 import type { Component } from 'solid-js';
 
-import { tw } from 'twind';
 import { Login } from './Login';
+// import { goto, Route } from './lib/router';
+import { init } from './lib/auth';
+import { RouteSectionProps } from '@solidjs/router';
 
-const App: Component = () => {
+const App = (props: RouteSectionProps) => {
+
   return (
-    <div class={tw`text-center`}>
-      <Login />
-    </div>
+    <>
+      <h1>Nostr Chan</h1>
+      {props.children}
+    </>
   );
 };
 
