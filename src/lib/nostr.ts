@@ -1,3 +1,4 @@
 import NDK from "@nostr-dev-kit/ndk";
 
-const ndk = new NDK();
+export const ndk = new NDK();
+
