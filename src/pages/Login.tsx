@@ -9,6 +9,7 @@ import { Button } from "../components/Button";
 
 export const Login: Component = () => {
   const [nsec, setNsec] = createSignal("");
+  const [password, setPassword] = createSignal("");
   const navigate = useNavigate();
 
   const validNsec = ({ value }: { value: string }) => {
@@ -16,20 +17,22 @@ export const Login: Component = () => {
   };
 
   const submit = () => {
-    login(nsec());
+    login(nsec(), password());
     navigate("/");
   };
 
   return (
-    <div class={tw`min-h-screen bg-gray-900 text-gray-100 p-8`}>
-      <Header title="Nostra-Chan!" />
+    <div class={tw`min-h-screen text-gray-100 p-8`}>
+      
 
       {/* Main Content */}
       <main class={tw`max-w-xs mx-auto`}>
         {/* Input Section */}
         <div class={tw`space-y-4 mb-8`}>
           {/* Time Input */}
-          <InputBar value={nsec} setValue={setNsec} placeholder="NSEC1 Key" />
+          <InputBar value={password} setValue={setPassword} placeholder="Password" />
+          <InputBar value={nsec} setValue={setNsec} placeholder="NSEC Key" />
+          
 
           {/* QR Scanner Section */}
           <div class={tw`flex items-center space-x-4`}>

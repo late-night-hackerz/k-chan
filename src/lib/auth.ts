@@ -2,8 +2,8 @@ import NDK, { NDKPrivateKeySigner } from "@nostr-dev-kit/ndk";
 import { ndk } from "./nostr";
 import { getPriv, storePriv } from "./secret";
 
-export const init = () => {
-  const nsec = getPriv()
+export const init = async (password: string) => {
+  const nsec = await getPriv(password)
   if(!nsec) {
     return false
   } else {
@@ -12,15 +12,13 @@ export const init = () => {
   }
 }
 
-export const signedIn = init()
-
-export const login = (nsec: string) => {
+export const login = (nsec: string, password: string) => {
   ndk.signer = new NDKPrivateKeySigner(nsec);
-  storePriv(nsec)
+  storePriv(nsec, password)
 }
 
-export const signup = () => {
+export const signup = (password: string) => {
   const signer = NDKPrivateKeySigner.generate();
   const nsec = signer.privateKey || ""
-  storePriv(nsec)
+  storePriv(nsec, password)
 }
