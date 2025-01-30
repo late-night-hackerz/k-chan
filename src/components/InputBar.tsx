@@ -5,7 +5,7 @@ export const InputBar = (props: {
   value: Accessor<string>;
   setValue: Setter<string>;
   placeholder: string;
-  class: string | undefined
+  class?: string
 }) => {
   const pasteKey = () => {
     navigator.clipboard.readText().then((text) => {
