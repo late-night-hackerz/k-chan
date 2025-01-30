@@ -22,7 +22,7 @@ export const Login: Component = () => {
   };
 
   return (
-    <div class={tw`min-h-screen text-gray-100 p-8`}>
+    <div class={tw`text-gray-100 p-8 flex flex-col justify-center`}>
       
 
       {/* Main Content */}

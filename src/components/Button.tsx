@@ -1,4 +1,3 @@
-import { action } from "@solidjs/router";
 import { tw } from "twind";
 
 export const Button = (props: {text: string, action: () => void}) => {
