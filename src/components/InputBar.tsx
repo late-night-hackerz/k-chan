@@ -5,6 +5,7 @@ export const InputBar = (props: {
   value: Accessor<string>;
   setValue: Setter<string>;
   placeholder: string;
+  class: string | undefined
 }) => {
   const pasteKey = () => {
     navigator.clipboard.readText().then((text) => {
@@ -14,7 +15,7 @@ export const InputBar = (props: {
   };
 
   return (
-    <div class={tw`relative`}>
+    <div class={tw`relative ${props.class || ""}`}>
       <input
         type="text"
         value={props.value()}

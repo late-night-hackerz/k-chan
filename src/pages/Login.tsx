@@ -66,7 +66,6 @@ const LoginStep1 = (props: {
       <QrCodeScanner active={qrcodeScannerOpen} setter={updateNsec} />
 
       <Button
-        text="Next"
         action={() => {
           if (props.nsec().startsWith("nsec1")) {
             props.setStep(1);
@@ -74,7 +73,7 @@ const LoginStep1 = (props: {
             props.errorMessage("Invalid NSEC Key");
           }
         }}
-      />
+      >Next</Button>
     </>
   );
 };
@@ -117,7 +116,7 @@ export const Login: Component = () => {
               placeholder="Password"
             />
             <br />
-            <Button text="Submit" action={submit} />
+            <Button action={submit}>Submit</Button>
           </>
         )}
       </main>
