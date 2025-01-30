@@ -82,12 +82,18 @@ const LoginStep1 = (props: {
 export const Login: Component = () => {
   const [nsec, setNsec] = createSignal("");
   const [currentStep, setCurrentStep] = createSignal(0);
-  const [password, setPassword] = createSignal("");
   const [error, setError] = createSignal("");
+
+  const [password, setPassword] = createSignal("");
+  const [retypePassword, setRetypePassword] = createSignal("");
 
   const navigate = useNavigate();
 
   const submit = () => {
+    if (password() != retypePassword()) {
+      setError("Passwords do not match");
+      return;
+    }
     login(nsec(), password());
     navigate("/");
   };
@@ -115,6 +121,11 @@ export const Login: Component = () => {
               value={password}
               setValue={setPassword}
               placeholder="Password"
+            />
+            <InputBar
+              value={retypePassword}
+              setValue={setRetypePassword}
+              placeholder="Retype Password"
             />
             <br />
             <Button text="Submit" action={submit} />
