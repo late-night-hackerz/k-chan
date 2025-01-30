@@ -5,11 +5,14 @@ import { useNavigate } from "@solidjs/router";
 import { Header } from "../components/Header";
 import { InputBar } from "../components/InputBar";
 import { Button } from "../components/Button";
+import QrScanner from "qr-scanner";
+import { QrCodeScanner } from "../components/QrCodeScanner";
 // import { goto } from "./lib/router";
 
 export const Login: Component = () => {
   const [nsec, setNsec] = createSignal("");
   const [password, setPassword] = createSignal("");
+  const [qrcodeScannerOpen, setQrcodeScannerOpen] = createSignal(false);
   const navigate = useNavigate();
 
   const validNsec = ({ value }: { value: string }) => {
@@ -21,16 +24,23 @@ export const Login: Component = () => {
     navigate("/");
   };
 
+  const updateNsec = (value: string) => {
+    if (validNsec({ value })) {
+      setNsec(value);
+    }
+  }
+
   return (
     <div class={tw`text-gray-100 p-8 flex flex-col justify-center`}>
       
+      {/* <InputBar value={password} setValue={setPassword} placeholder="Password" /> */}
+
 
       {/* Main Content */}
       <main class={tw`max-w-xs mx-auto`}>
         {/* Input Section */}
-        <div class={tw`space-y-4 mb-8`}>
+        <div class={tw`space-y-4 mb-8`} id="login-input-step-1">
           {/* Time Input */}
-          <InputBar value={password} setValue={setPassword} placeholder="Password" />
           <InputBar value={nsec} setValue={setNsec} placeholder="NSEC Key" />
           
 
@@ -46,6 +56,7 @@ export const Login: Component = () => {
                          bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors
                          focus:(outline-none ring-2 ring-purple-500)
                          border(1 gray-700)`}
+            on:click={() => setQrcodeScannerOpen(!qrcodeScannerOpen())}
           >
             <svg
               class={tw`w-5 h-5`}
@@ -63,6 +74,8 @@ export const Login: Component = () => {
             <span>Scan QR Code</span>
           </button>
         </div>
+      
+        <QrCodeScanner active={qrcodeScannerOpen} setter={updateNsec} />
 
         <Button text="Login" action={submit} />
       </main>
