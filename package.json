@@ -11,16 +11,25 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^22.13.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.3",
     "typescript": "^5.7.2",
     "vite": "^6.0.0",
     "vite-plugin-solid": "^2.11.0"
   },
   "dependencies": {
+    "@kobalte/core": "^0.13.7",
     "@nostr-dev-kit/ndk": "^2.11.0",
     "@solidjs/router": "^0.15.3",
+    "@tailwindcss/vite": "^4.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "qr-scanner": "^1.4.2",
     "solid-js": "^1.9.3",
-    "twind": "^0.16.19"
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "trustedDependencies": [
     "es5-ext"

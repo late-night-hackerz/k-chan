@@ -1,7 +1,7 @@
 import { tw } from "twind"
 import { InputBar } from "../components/InputBar"
 import { createSignal } from "solid-js"
-import { Button } from "../components/Button"
+import { Button } from "../components/ui/button"
 
 const First = () => {
   const [username, setUsername] = createSignal("")
@@ -13,15 +13,13 @@ const First = () => {
       <InputBar value={username} setValue={setUsername} placeholder="username" class={tw`w-full mb-4 p-2 rounded-md`}/>
       <h2 class={tw`text-lg font-semibold text-gray-400 mb-2`}>Enter a Display name:</h2>
       <InputBar value={displayName} setValue={setDisplayName} placeholder="Display Name" class="w-full mb-4 p-2 rounded-md"/>
-      <Button action={() => {
-        console.log("Hello")
-      }} class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Next</Button>
+      <Button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Next</Button>
     </div>
   )
 }
 
 
-export const Signup = ()=>{
+export const Signup = () => {
   const [step, setStep] = createSignal(0);
   return (
     <>
