@@ -29,7 +29,8 @@
     "qr-scanner": "^1.4.2",
     "solid-js": "^1.9.3",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "twind": "^0.16.19"
   },
   "trustedDependencies": [
     "es5-ext"
