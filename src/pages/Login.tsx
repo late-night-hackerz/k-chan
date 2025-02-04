@@ -4,7 +4,7 @@ import { login } from "../lib/auth";
 import { useNavigate } from "@solidjs/router";
 import { Header } from "../components/Header";
 import { InputBar } from "../components/InputBar";
-import { Button } from "../components/Button";
+import { Button } from "../components/ui/button";
 import QrScanner from "qr-scanner";
 import { QrCodeScanner } from "../components/QrCodeScanner";
 import { ErrorPopup } from "../components/ErrorBanner";
@@ -24,7 +24,7 @@ const LoginStep1 = (props: {
 
   return (
     <>
-      <div class={tw`space-y-4 mb-8`} id="login-input-step-1">
+      <div class="space-y-4 mb-8" id="login-input-step-1">
         {/* Time Input */}
         <InputBar
           value={props.nsec}
@@ -33,21 +33,21 @@ const LoginStep1 = (props: {
         />
 
         {/* QR Scanner Section */}
-        <div class={tw`flex items-center space-x-4`}>
-          <div class={tw`flex-1 h-px bg-gray-700`}></div>
-          <span class={tw`text-gray-500 text-sm`}>or</span>
-          <div class={tw`flex-1 h-px bg-gray-700`}></div>
+        <div class="flex items-center space-x-4">
+          <div class="flex-1 h-px bg-gray-700"></div>
+          <span class="text-gray-500 text-sm">or</span>
+          <div class="flex-1 h-px bg-gray-700"></div>
         </div>
 
         <button
-          class={tw`w-full py-2 flex items-center justify-center space-x-2
+          class="w-full py-2 flex items-center justify-center space-x-2
                    bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors
                    focus:(outline-none ring-2 ring-purple-500)
-                   border(1 gray-700)`}
+                   border(1 gray-700)"
           on:click={() => setQrcodeScannerOpen(!qrcodeScannerOpen())}
         >
           <svg
-            class={tw`w-5 h-5`}
+            class="w-5 h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -66,7 +66,7 @@ const LoginStep1 = (props: {
       <QrCodeScanner active={qrcodeScannerOpen} setter={updateNsec} />
 
       <Button
-        action={() => {
+        onClick={() => {
           if (props.nsec().startsWith("nsec1")) {
             props.setStep(1);
           } else {
@@ -98,11 +98,11 @@ export const Login: Component = () => {
   };
 
   return (
-    <div class={tw`text-gray-100 p-8 flex flex-col justify-center`}>
+    <div class="text-gray-100 p-8 flex flex-col justify-center">
       {/* <InputBar value={password} setValue={setPassword} placeholder="Password" /> */}
 
       {/* Main Content */}
-      <main class={tw`w-[70%] mx-auto`}>
+      <main class="w-[70%] mx-auto">
         {error().length != 0 && (
           <ErrorPopup message="Invalid NSEC Key" onClose={() => setError("")} />
         )}
@@ -127,7 +127,7 @@ export const Login: Component = () => {
               placeholder="Retype Password"
             />
             <br />
-            <Button action={submit}>Submit</Button>
+            <Button onClick={submit}>Submit</Button>
           </>
         )}
       </main>
